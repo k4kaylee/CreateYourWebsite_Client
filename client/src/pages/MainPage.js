@@ -14,58 +14,78 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 export default function MainPage() {
-  // let animItems = document.querySelectorAll('.anim-items');
-  // if (animItems.length > 0){
-  //   function animOnScroll(params) {
-  //     for (let i = 0; i < animItems.length; i++) {
-  //       const animItem = animItems[i];
-  //       const animItemHeight = animItem.offsetHeight;
-  //       const animItemOffset = offset(animItem).top;
-  //       const animStart = 4;
-  //
-  //
-  //
-  //       let animItemPoint = window.innerHeight - animItemHeight / animStart;
-  //
-  //       if (animItemHeight > window.innerHeight) {
-  //         animItemPoint = window.innerHeight - window.innerHeight / animStart;
-  //       }
-  //
-  //       if((window.pageYOffset > animItemOffset - animItemPoint) && window.pageYOffset < (animItemOffset + animItemHeight)){
-  //         animItem.classList.add('_active');
-  //       } else {
-  //         animItem.classList.remove('_active');
-  //       }
-  //     }
-  //   }
-  //   function offset(el) {
-  //     const rect = el.getBoundingClientRect(),
-  //       scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-  //       scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  //     return { top: rect.top + scrollTop, left: rect.left + scrollLeft}
-  //   }
-  // }
-  const headerRef = useRef(null);
-  const pointRef = useRef(null);
-  const textRRef = useRef(null);
-  const textLRef = useRef(null);
-  // const lines = useRef(null);
+  const contents = [
+    {
+      id: "1",
+      point: "Выберите шаблон",
+      text: "Есть идея, но не знаете, как реализовать? Или, возможно, сайт нужно сделать в кратчайшие сроки? Попробуйте выбрать что-то из уже <b>готовых решений</b>. От трэвел-блога до личной визитки – найдётся всё!",
+    },
+    {
+      id: "2",
+      point: "Всё по своим местам",
+      text: "Вы знаете, что делаете? Что ж, тогда осталось всего-то расположить элементы на вашей странице. Для этого воспользуйтесь <b>редактором</b>. Вы наверняка найдёте необходимые компоненты!"
+    },
+    {
+      id: "3",
+      point: "Создавайте",
+      text: "Наш ресурс предоставляет вам полную свободу действий в подходе к созданию вашего сайта. Изменяйте готовые наброски или делайте всё полностью с нуля."
+    }
+  ];
+  const bottomRef = useRef(null);
+  const rightRef = useRef(null);
+  const leftRef = useRef(null);
   useEffect(() => {
-    const header = headerRef.current;
-    const point = pointRef.current;
-    const paragraphRight = textRRef.current;
-    const paragraphLeft = textLRef.current;
-    // const line = lines.current;
+    const header = bottomRef.current;
+    const paragraphRight = rightRef.current;
+    const paragraphLeft = leftRef.current;
     gsap.fromTo(header, {y: 100, opacity: 0}, {y: 0, opacity: 1, duration: 1, scrollTrigger: {
-      trigger: header
+      trigger: header,
     }})
-    gsap.fromTo(paragraphRight, {x: 100, opacity: 0}, {x: 0, opacity: 1, duration: 1, delay: 0.7, scrollTrigger: {
+    gsap.fromTo(paragraphRight, {x: 100, opacity: 0}, {x: 0, opacity: 1, duration: 1, delay: 0.3, scrollTrigger: {
       trigger: paragraphRight
     }})
-    gsap.fromTo(paragraphLeft, {x: -30, opacity: 0}, {x: 0, opacity: 1, duration: 1, delay: 1.4, scrollTrigger: {
+    gsap.fromTo(paragraphLeft, {x: -30, opacity: 0}, {x: 0, opacity: 1, duration: 1, delay: 0.5, scrollTrigger: {
       trigger: paragraphLeft
     }})
 
+
+    gsap.utils.toArray(".fadeIn").forEach(fade => {
+        gsap.fromTo(fade, {
+          opacity: 0
+        },
+        {
+          opacity: 1,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: fade
+        }})
+    });
+    gsap.utils.toArray(".leftRef").forEach(paragraphLeft => {
+        gsap.fromTo(paragraphLeft, {
+          x: -30,
+          opacity: 0
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: paragraphLeft
+        }})
+    });
+    gsap.utils.toArray(".rightRef").forEach(paragraphRight => {
+        gsap.fromTo(paragraphRight, {
+          x: 100,
+          opacity: 0
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: paragraphRight
+        }})
+    });
 
   }, [])
     return (
@@ -91,7 +111,6 @@ export default function MainPage() {
                         <li className='main-page__subtext orbitron shadow-rose '>MOTIVATION</li>
                     </ul>
                     <p className='main-page__title orbitron'>CREATE YOUR WEBSITE</p>
-                    {/*TODO: Сделать url для p */}
                     <ul className='row'>
                         <li className='main-page__subtext ralewawy shadow-lemon'>ОБРАЗ МЫШЛЕНИЯ</li>
                         <li className='main-page__subtext orbitron shadow-rose '>STRATEGY</li>
@@ -108,9 +127,19 @@ export default function MainPage() {
 
 
             <div class="contentBox">
-              <div className="headerText" ref={headerRef}>Создайте сайт своей мечты!</div>
-              <p className="contentText" ref={textRRef}>Необходимо создать сайт, но не знаете как? Наш сервис готов вам в этом помочь!</p>
-              <p className="contentPoint" ref={textLRef}>1. Выберите шаблон</p>
+              <div className="headerText" ref={bottomRef}>Создайте сайт своей мечты!</div>
+              <p className="contentText" ref={rightRef}> Необходимо создать сайт, но не знаете как? Наш сервис готов вам в этом помочь!</p>
+              <p className="contentPoint" ref={leftRef}>Выберите шаблон</p>
+              <div className="imageDiv fadeIn"></div>
+              <p className="contentSubText rightRef">Есть идея, но не знаете, как реализовать? Или, возможно, сайт нужно сделать в кратчайшие сроки? Попробуйте выбрать что-то из уже <b>готовых решений</b>. От трэвел-блога до личной визитки – найдётся всё!</p>
+              <p className="contentPoint leftRef">Всё по своим местам</p>
+              <div className="imageDiv fadeIn"></div>
+              <p className="contentSubText rightRef">Вы знаете, что делаете? Что ж, тогда осталось всего-то расположить элементы на вашей странице. Для этого воспользуйтесь <b>редактором</b>. Вы наверняка найдёте необходимые компоненты!</p>
+              <p className="contentPoint leftRef">Создавайте</p>
+              <div className="imageDiv fadeIn"></div>
+              <p className="contentSubText rightRef">Наш ресурс предоставляет вам полную свободу действий в подходе к созданию вашего сайта. Изменяйте готовые наброски или делайте всё полностью с нуля.</p>
+              <p className="contentPoint fadeIn">Дерзайте!</p>
+              <div className="contentStartButton fadeIn">Создать</div>
             </div>
 
 

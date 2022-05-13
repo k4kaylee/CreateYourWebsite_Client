@@ -4,7 +4,15 @@
   margin: 0;
 }
 
-
+.imageDiv{
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 400px;
+  background-color: red;
+}
 
 body {
   margin: 0 auto;
@@ -30,14 +38,14 @@ body::-webkit-scrollbar-thumb {
 
 /* Aнимации */
 /* Фон */
-/* @keyframes mainPageWrapperAnimation {
+  @keyframes mainPageWrapperAnimation {
   from{
     opacity: 0;
   }
   to{
     opacity: 1;
   }
-} */
+}
 
 
 /* Надписи */
@@ -60,6 +68,7 @@ body::-webkit-scrollbar-thumb {
   to{
     left: 0;
     opacity: 100%;
+    animation-play-state: paused;
   }
 }
 
@@ -89,7 +98,6 @@ body::-webkit-scrollbar-thumb {
     right: 0em;
   }
 }
-
 
 
 
@@ -199,7 +207,7 @@ li {
   display: flex;
   align-items: center;
   top: 0px;
-
+  animation: mainPageWrapperAnimation 0.3s;
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
@@ -224,6 +232,8 @@ li {
   width: 19px;
   background-color: #0F0109;
   animation: lineAnimation 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
   position: relative;
   animation-delay: 0.6s;
 }
@@ -232,6 +242,8 @@ li {
   background-color: #CEFF03;
   margin-left: 5px;
   animation: lineAnimation 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
   position: relative;
   animation-delay: 0.5s;
 }
@@ -239,6 +251,8 @@ li {
   width: 9px;
   background-color: #0F0109;
   animation: lineAnimation 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
   position: relative;
   animation-delay: 0.4s;
 }
@@ -247,6 +261,8 @@ li {
   background-color: #CEFF03;
   margin-left: 17px;
   animation: lineAnimation 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
   position: relative;
   animation-delay: 0.3s;
 }
@@ -254,6 +270,8 @@ li {
   width: 27px;
   background-color: #3E346E;
   animation: lineAnimation 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
   position: relative;
   animation-delay: 0.2s;
 }
@@ -262,6 +280,8 @@ li {
   background-color: #F90B8E;
   margin-left: 6px;
   animation: lineAnimation 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
   position: relative;
 }
 .main-page__text{
@@ -501,7 +521,8 @@ text-shadow: 10px 3px 4px #CEFF03;
 /* CONTENT */
 .contentBox{
   width: 80%;
-  height: 100em;
+  height: 100%;
+  margin-bottom: 30px;
   margin-right: auto;
   margin-left: auto;
   padding-top: 3%;
@@ -525,16 +546,41 @@ text-shadow: 10px 3px 4px #CEFF03;
   margin-left: 50px;
 }
 
+.contentSubText{
+    margin-left: 50px;
+    font-size: 25px;
+}
+
 .contentPoint{
-  margin-top: 60px;
+  margin-top: 40px;
   margin-left: 90px;
   font-weight: bolder;
   font-size: 35px;
 }
 
-._active{
-  transform: translate(0px, 0px);
-  opacity: 1;
+.contentStartButton{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  width: 200px;
+  height: 80px;
+  color: #CEFF03;
+  background-color: black;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s linear;
+}
+
+.contentStartButton:hover{
+  cursor: pointer;
+  box-shadow:
+    5px 5px 0px #CEFF03,
+    10px 10px 0px #F90B8E,
+    15px 15px 0px #1BACFE,
+    20px 20px 0px #fff700,
+    40px 40px 10px #3E346E;
 }
 
 /* MEDIA */
