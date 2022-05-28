@@ -3,15 +3,16 @@ import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import * as IoIcons from 'react-icons/io5'
 export const  SideBarData = [
+    
     {
         title : 'Home',
-        path: '/home',
+        path: '/mainpage',
         icon: <AiIcons.AiFillHome/>,
         cName:'nav-text'
     },
     {
         title : 'Editor',
-        path: '/',
+        path: '/editor',
         icon: <AiIcons.AiFillEdit/>,
         cName:'nav-text',
     },
