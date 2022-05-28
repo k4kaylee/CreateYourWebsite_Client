@@ -1,19 +1,21 @@
 import React from 'react'
+import { observer } from 'mobx-react-lite';
 import * as Icons from 'react-icons'
 import {FaBars} from "react-icons/bi";
 import NavBar from '../components/NavBar.js';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useContext } from 'react';
 import { useInView } from 'react-intersection-observer';
 import ScrollAnimation from 'react-animate-on-scroll';
 import { gsap } from "gsap";
+import $api from "../http";
+import { Context } from '..';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
-
-
-export default function MainPage() {
+const MainPage = () => {
+  const { store } = useContext(Context)
   const contents = [
     {
       id: "1",
@@ -34,6 +36,7 @@ export default function MainPage() {
   const bottomRef = useRef(null);
   const rightRef = useRef(null);
   const leftRef = useRef(null);
+  
   useEffect(() => {
     const header = bottomRef.current;
     const paragraphRight = rightRef.current;
@@ -47,7 +50,6 @@ export default function MainPage() {
     gsap.fromTo(paragraphLeft, {x: -30, opacity: 0}, {x: 0, opacity: 1, duration: 1, delay: 0.5, scrollTrigger: {
       trigger: paragraphLeft
     }})
-
 
     gsap.utils.toArray(".fadeIn").forEach(fade => {
         gsap.fromTo(fade, {
@@ -90,7 +92,10 @@ export default function MainPage() {
   }, [])
     return (
         <div className='main-page'>
-
+          <Link to="/login">
+            <button onClick={()=>store.logout()}>Выйти</button>
+          </Link>
+           
             <ul className='row columns-ul'>
                 <li className='columns columns_first'></li>
                 <li className='columns columns_second'></li>
@@ -101,16 +106,14 @@ export default function MainPage() {
             </ul>
 
             <div className='main-page__wrapper'>
-
                 <div className='indent'></div>
-
                 <div className='main-page__text'>
                     <ul className='row'>
                         <li className='main-page__subtext ralewawy shadow-blue'>В РИТМЕ ЖИЗНИ</li>
                         <li className='main-page__subtext orbitron shadow-lemon'>BRAINCHILD</li>
                         <li className='main-page__subtext orbitron shadow-rose '>MOTIVATION</li>
                     </ul>
-                    <p className='main-page__title orbitron'>CREATE YOUR WEBSITE</p>
+                   <p className='main-page__title orbitron'>CREATE YOUR WEBSITE</p>
                     <ul className='row'>
                         <li className='main-page__subtext ralewawy shadow-lemon'>ОБРАЗ МЫШЛЕНИЯ</li>
                         <li className='main-page__subtext orbitron shadow-rose '>STRATEGY</li>
@@ -119,12 +122,7 @@ export default function MainPage() {
                     </ul>
                 </div>
                 <NavBar/>
-
             </div>
-
-
-
-
 
             <div class="contentBox">
               <div className="headerText" ref={bottomRef}>Создайте сайт своей мечты!</div>
@@ -141,8 +139,8 @@ export default function MainPage() {
               <p className="contentPoint fadeIn">Дерзайте!</p>
               <div className="contentStartButton fadeIn">Создать</div>
             </div>
-
-
+            
         </div>
     )
 }
+export default observer(MainPage)

@@ -4,6 +4,8 @@ import AuthService from "../services/AuthService";
 import axios from "axios";
 import { AuthResponse } from "../models/response/AuthResponse";
 import { API_URL } from "../http";
+import MainPage from "../pages/MainPage";
+import LoginForm from "../components/LoginForm";
 // Взаимодействие с глобальным хранилищем
 export class Store{
     user = {} as IUser;
@@ -34,7 +36,8 @@ export class Store{
             this.setAuth(true)
             this.setUser(response.data.user)
         }   catch(e) {
-            console.log(e); // ?-проверка на существование(typescript) из-за этого не выводятся в консоль
+            // console.log(e.response?.data?.message); // ?-проверка на существование(typescript) из-за этого не выводятся в консоль
+            alert(e.response?.data?.message);
         }
     }
 
@@ -46,7 +49,8 @@ export class Store{
             this.setAuth(true)//если дошло, то мы зарегестрированы
             this.setUser(response.data.user)
         }   catch(e) {
-            console.log(e); // ?-проверка на существование(typescript)
+            // console.log(e.response?.data?.message); // ?-проверка на существование(typescript)
+            alert(e.response?.data?.message);
         }
     }
 
@@ -57,7 +61,8 @@ export class Store{
             this.setAuth(false)
             this.setUser({}as IUser)
         }   catch(e) {
-            console.log(e); // ?-проверка на существование(typescript)
+            // console.log(e.response?.data?.message); // ?-проверка на существование(typescript)
+            alert(e.response?.data?.message);
         }
     }
 
@@ -70,9 +75,10 @@ export class Store{
             this.setAuth(true);
             this.setUser(response.data.user)
         }   catch(e) {
-            console.log(e); // ?-проверка на существование(typescript)
+            // console.log(e.response?.data?.message); // ?-проверка на существование(typescript)
+            alert(e.response?.data?.message);
         } finally{ //выполняется и при ошибке и если все ок
             this.setLoading(false)
         }
     }
-}
+} 

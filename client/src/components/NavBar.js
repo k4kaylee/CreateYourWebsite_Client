@@ -4,13 +4,23 @@ import MadeBy from './MadeBy'
 import { SideBarData } from './SideBarData'
 function NavBar() {
     const [sidebar, setSidebar] = useState(false)
-    const showSidebar = () => setSidebar(!sidebar)
+    // const showSidebar = () => setSidebar(!sidebar) 
+    const showSidebar = () => {
+        setSidebar(!sidebar);
+        sidebar ? document.body.style.overflow = 'visible' : document.body.style.overflow = 'hidden';
+      }
+    // const hi = () =>{
+    //     if (button.className)
+    //     console.log('hi');
+    // }
     const a = sidebar
     return (
         <>
             <button type="button"
                 className={sidebar ? 'btn menu-bars active ' : 'btn menu-bars '}
-                onClick={showSidebar}>
+                onClick={showSidebar}
+                // onClick={hi}
+                >
                 <span className="menu-bars__line"></span>
                 <span className="menu-bars__line"></span>
                 <span className="menu-bars__line"></span>
