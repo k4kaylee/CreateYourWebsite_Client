@@ -23,7 +23,7 @@ $api.interceptors.response.use((config) => {
         try {
             const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, { withCredentials: true })
             localStorage.setItem('token', response.data.accessToken) //прийдут некоторые токены, поэтому сохраняем их в localstorage
-            return $api.request(originalRequest);  // хранит все данныедля запроса
+            return $api.request(originalRequest);  // хранит все данные для запроса
         } catch (error) {
             console.log('НЕ АВТОРИЗОВАН');
         }

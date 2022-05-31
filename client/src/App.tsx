@@ -2,7 +2,6 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import './App.scss';
 import MainPage from './pages/MainPage.js';
 import { BrowserRouter, BrowserRouter as Router } from "react-router-dom";
-import LoginForm from './components/LoginForm';
 import { Context } from '.';
 import { observer } from 'mobx-react-lite';
 import { IUser } from './models/IUser';

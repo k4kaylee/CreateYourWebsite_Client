@@ -31,7 +31,6 @@ export class Store{
     async login(email: string, password: string){
         try{
             const response = await AuthService.login(email, password)
-            console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)
             this.setUser(response.data.user)
@@ -44,7 +43,6 @@ export class Store{
     async registration(email: string, password: string){
         try{
             const response = await AuthService.registration(email, password)
-            console.log(response);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true)//если дошло, то мы зарегестрированы
             this.setUser(response.data.user)
@@ -70,7 +68,6 @@ export class Store{
         this.setLoading(true)
         try{ //тут interceptor будет лишним, так как нам будет выдаваться ошибка 401, в notion написал про это
             const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {withCredentials:true})
-            console.log(response);
             localStorage.setItem('token', response.data.accessToken); //вызываем это так как он зарегестрирован
             this.setAuth(true);
             this.setUser(response.data.user)
