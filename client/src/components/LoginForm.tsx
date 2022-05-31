@@ -7,7 +7,6 @@ import { IUser } from '../models/IUser';
 import UserService from '../services/UserService';
 import Modal from './Modal';
 
-
 const LoginForm: FC = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

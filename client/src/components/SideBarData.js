@@ -24,7 +24,7 @@ export const  SideBarData = [
     },
     {
         title : 'Roma',
-        path: '/roma',
+        path: 'https://ru-ru.facebook.com/',
         icon: <IoIcons.IoPersonCircleOutline/>,
         cName:'nav-text'
     },
