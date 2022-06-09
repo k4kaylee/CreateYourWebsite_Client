@@ -3,9 +3,9 @@ import { IUser } from "../models/IUser";
 import AuthService from "../services/AuthService";
 import axios from "axios";
 import { AuthResponse } from "../models/response/AuthResponse";
-import { API_URL } from "../http";
 import MainPage from "../pages/MainPage";
 import LoginForm from "../components/LoginForm";
+import { API_URL } from "../http";
 // Взаимодействие с глобальным хранилищем
 export class Store{
     user = {} as IUser;
@@ -67,13 +67,12 @@ export class Store{
     async checkAuth(){
         this.setLoading(true)
         try{ //тут interceptor будет лишним, так как нам будет выдаваться ошибка 401, в notion написал про это
-            const response = await axios.get<AuthResponse>(`${API_URL}/refresh`, {withCredentials:true})
-            localStorage.setItem('token', response.data.accessToken); //вызываем это так как он зарегестрирован
+            const response = await axios.get<AuthResponse>(`${API_URL}/user/refresh`, {withCredentials:true})
+            localStorage.setItem('token', response.data.accessToken); //вызываем это так как он зарег
             this.setAuth(true);
             this.setUser(response.data.user)
         }   catch(e) {
-            // console.log(e.response?.data?.message); // ?-проверка на существование(typescript)
-            alert(e.response?.data?.message);
+            console.log(e.response?.data?.message); // ?-проверка на существование(typescript)
         } finally{ //выполняется и при ошибке и если все ок
             this.setLoading(false)
         }

@@ -1,18 +1,22 @@
 import { AuthResponse } from './../models/response/AuthResponse';
 import { AxiosResponse } from "axios";
-import $api from "../http";
+import {$api, $authHost} from "../http/index";
 
 // функции с запросами
 export default class AuthService{
     static async login(email: string, password: string):Promise<AxiosResponse<AuthResponse>> {
-        return $api.post<AuthResponse>('/login', {email, password}) //AuthResponse - чтобы видеть данные
+        return $api.post<AuthResponse>('/user/login', {email, password, role:"ADMIN"}) //AuthResponse - чтобы видеть данные
     }
 
     static async registration(email: string, password: string):Promise<AxiosResponse<AuthResponse>> {
-        return $api.post<AuthResponse>('/registration', {email, password}) //AuthResponse - чтобы видеть данные
+        return $api.post<AuthResponse>('/user/registration', {email, password, role:"ADMIN"}) //AuthResponse - чтобы видеть данные
     }
 
     static async logout():Promise<void>{
-        return $api.post('/logout') //AuthResponse - чтобы видеть данные
+        return $api.post('/user/logout') //AuthResponse - чтобы видеть данные
+    }
+
+    static async check(){
+        return $authHost.post('/user/registration') //AuthResponse - чтобы видеть данные
     }
 } //данные которые отправил сервис, находятся в data

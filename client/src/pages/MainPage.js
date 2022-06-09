@@ -92,10 +92,7 @@ const MainPage = () => {
   }, [])
     return (
         <div className='main-page'>
-          {/* <Link to="/login">
-            <button onClick={()=>store.logout()}>Выйти</button>
-          </Link> */}
-           
+
             <ul className='row columns-ul'>
                 <li className='columns columns_first'></li>
                 <li className='columns columns_second'></li>
@@ -134,8 +131,9 @@ const MainPage = () => {
               <div className='contentBox-body'>
                 <div className="imageDiv imageDivMarketing fadeIn"></div>
                 <p className='contentBox-text orbitron rightRef'>БИЗНЕС-АНАЛИТИКА</p>
+                <p className="contentSubText leftRef">Вы научитесь эффективно общаться с заказчиками, формулировать технические задания, улучшать и автоматизировать бизнес-процессы.</p>
               </div>
-              <p className="contentSubText leftRef">Вы научитесь эффективно общаться с заказчиками, формулировать технические задания, улучшать и автоматизировать бизнес-процессы.</p>
+             
               {/* <p className="contentPoint leftRef">Всё по своим местам</p> */}
               <div className='contentBox-body'>
                 <div className="imageDiv imageDivDigital fadeIn"></div>
@@ -172,14 +170,16 @@ const MainPage = () => {
               </div>
               <p className="contentSubText leftRef">Вы научитесь создавать 3D-игры: разрабатывать сюжет, дизайн и механику.</p>
 
-              <div className='contentBox-body'>
+              <div className='contentBox-body '>
                 <div className="imageDiv imageDivMinecraft fadeIn"></div>
                 <p className='contentBox-text orbitron rightRef'>MINECRAFT ПРОГРАММИРОВАНИЕ</p>
               </div>
               <p className="contentSubText leftRef">Вы научитесь создавать 3D-вселенные, управлять искусственным интеллектом и весело проводить время.</p>
 
               {/* <div className="contentStartButton fadeIn">Создать</div> */}
-              <button className="btn__clickable contentStartButton" >ВЫБРАТЬ КУРС</button>
+              <Link to='/shop'>
+                <button className="btn__clickable contentStartButton">ВЫБРАТЬ КУРС</button>
+              </Link>
             </div>
             
         </div>
