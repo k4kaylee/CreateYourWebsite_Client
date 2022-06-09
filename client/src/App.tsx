@@ -9,7 +9,7 @@ import UserService from './services/UserService';
 import AppRoutes from './components/AppRoutes';
 
 const App: FC = () => {
-  
+
   // при первом запуске приложения это запускать 
   // const {store} = useContext(Context)
   // const [users, setUsers] = useState<IUser[]>([])
@@ -55,9 +55,9 @@ const App: FC = () => {
       </div> */}
 
       <BrowserRouter>
-        {/* <MainPage/> */}
-        <AppRoutes/>
-      </BrowserRouter>    
+        <AppRoutes />
+      </BrowserRouter>
+
       {/* Здесь должен быть только approuter. Redirect тип чувак если тебе нужен сайт будь добр залогинься */}
     </div>
   );

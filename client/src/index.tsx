@@ -2,30 +2,35 @@ import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {Store} from './store/store';
+import { Store } from './store/store';
+import CourseStore from "./store/CourseStore";
+import UserStore from "./store/UserStore";
 
-interface State{
+interface State {
   store: Store,
+  user: UserStore,
+  course: CourseStore
 }
 
-const store = new Store();
+export const store = new Store();
+export const user = new UserStore();
+export const course = new CourseStore();
 
 export const Context = createContext<State>({
   store,
+  user,
+  course
 })
 
 ReactDOM.render(
   <Context.Provider value={{
+    user,
+    course,
     store
   }}>
-      <React.StrictMode>
+    <React.StrictMode>
       <App />
     </React.StrictMode>
   </Context.Provider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-

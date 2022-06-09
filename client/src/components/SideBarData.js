@@ -11,16 +11,22 @@ export const  SideBarData = [
         cName:'nav-text'
     },
     {
-        title : 'Editor',
-        path: '/editor',
-        icon: <AiIcons.AiFillEdit/>,
-        cName:'nav-text',
+        title : 'Shop',
+        path: '/shop',
+        icon: <AiIcons.AiFillHome/>,
+        cName:'nav-text'
     },
     {
-        title : 'About the project',
-        path: '/about',
-        icon: <AiIcons.AiFillQuestionCircle/>,
+        title : 'Admin',
+        path: '/admin',
+        icon: <AiIcons.AiFillHome/>,
         cName:'nav-text'
+    },
+    {
+        title : 'Loading',
+        path: '/loading',
+        icon: <AiIcons.AiFillEdit/>,
+        cName:'nav-text',
     },
     {
         title : 'Roma',

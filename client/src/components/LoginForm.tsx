@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '..';
-import $api from '../http';
+import { $api } from '../http';
 import { IUser } from '../models/IUser';
 import UserService from '../services/UserService';
 import Modal from './Modal';
@@ -35,8 +35,9 @@ const LoginForm: FC = (props) => {
     body: "",
     id: "",
   });
-  
+
   return (
+    // store.isAuth ?
     <>
       {/* <input onChange={e => setEmail(e.target.value)} value={email} type="text" placeholder="Email" />
       <input onChange={e => setPassword(e.target.value)} value={password} type="password" placeholder="Password" />
@@ -47,32 +48,33 @@ const LoginForm: FC = (props) => {
       {/* <Modal active={modalActive} setActive={setModalActive}>
 
       </Modal> */}
-      <div className="container">
-            <div className="top"></div>
-            <div className="bottom"></div>
-            <div className="center">
-              <h2>Please Sign Up, Sign In</h2>
-              <input onChange={e => setEmail(e.target.value)} value={email} type="email" placeholder="email"/>
-              <input onChange={e => setPassword(e.target.value)} value={password} type="password" placeholder="password"/>
-              <div className='row'>
-              {/* <Link to="/mainpage">
-                <button onClick={() => store.login(email, password)}> Log in </button>
-              </Link> */}
-                <Link to="/mainpage">
-                  <button onClick={() => store.login(email, password)} className="btn__clickable"> Log in </button>
-                </Link>
-                <Link to="/mainpage">
-                  <button onClick={() => store.registration(email, password)} className="btn__clickable">Registration</button>
-                </Link>
-                {/* <button onClick={getUsers}>Получить пользователей</button> */}
-              </div>
-            
-              {/* {props ? (<span className="error">ERROR</span>):(<p></p>)} */}
-            </div>
-        </div>
+      <div className="container-login">
+        <div className="top"></div>
+        <div className="bottom"></div>
+        <div className="center">
+          <h2>Please Sign Up, Sign In</h2>
+          <input onChange={e => setEmail(e.target.value)} value={email} type="email" placeholder="user@gmail.com" />
+          <input onChange={e => setPassword(e.target.value)} value={password} type="password" placeholder="password" />
+          <div className='row'>
+            {/* <Link to="/mainpage"> */}
+            {/* <button onClick={() => store.login(email, password)}> Log in </button> */}
+            {/* </Link> */}
+            {/* <Link > */}
+              <button onClick={() => store.login(email, password)} className="btn__clickable"> Log in </button>
+            {/* </Link> */}
 
+            {/* <Link to=""> */}
+              <button onClick={() => store.registration(email, password)} className="btn__clickable"> Registration </button>
+            {/* </Link> */}
+            {/* <button onClick={getUsers}>Получить пользователей</button> */}
+          </div>
+
+          {/* {props ? (<span className="error">ERROR</span>):(<p></p>)} */}
+        </div>
+      </div>
     </>
-  ); 
+
+  );
 };
 
 export default observer(LoginForm);
